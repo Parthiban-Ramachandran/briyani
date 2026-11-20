@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>பிரியாணி பொருட்கள்</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Tamil', sans-serif;
+      background: #fdf6ec;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #b5451b;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8a6d3b;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .progress-wrapper {
+      position: sticky;
+      top: 0;
+      background: #fdf6ec;
+      padding: 12px 0 16px;
+      z-index: 10;
+      border-bottom: 1px solid #e8c47c;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #c0392b;
+      margin: 20px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e8c47c;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .checklist li:hover {
+      background: #fcecd5;
+    }
+
+    .checklist li input[type="checkbox"] {
+      display: none;
+    }
+
+    .checklist li label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.05rem;
+      color: #3e2723;
+      user-select: none;
+    }
+
+    .checkmark {
+      width: 26px;
+      height: 26px;
+      border: 2px solid #c0392b;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      background: #fff;
+    }
+
+    .checkmark svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      stroke-width: 3;
+      fill: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    input[type="checkbox"]:checked + label .checkmark {
+      background: #c0392b;
+      border-color: #c0392b;
+    }
+
+    input[type="checkbox"]:checked + label .checkmark svg {
+      opacity: 1;
+    }
+
+    input[type="checkbox"]:checked + label .item-text {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .item-text {
+      transition: color 0.2s;
+    }
+
+    .qty {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: #8a6d3b;
+      white-space: nowrap;
+    }
+
+    .progress-bar {
+      background: #ecdcc4;
+      border-radius: 12px;
+      height: 14px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e67e22, #c0392b);
+      border-radius: 12px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #8a6d3b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🍛 பிரியாணி பொருட்கள்</h1>
+    <p class="subtitle">பிரியாணி செய்ய தேவையான முழு பொருட்கள் பட்டியல்</p>
+    <p style="text-align:center;font-size:0.7rem;color:#b5a68a;margin-bottom:12px;">Developed by Parthiban Ramachandran</p>
+
+    <div class="progress-wrapper">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-text" id="progressText">0 / 56 பொருட்கள் தயார்</p>
+    </div>
+
+    <h2 class="section-title">அரிசி & எண்ணெய்</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item1">
+        <label for="item1">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">24 கேரட் அரிசி</span>
+          <span class="qty">50 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item2">
+        <label for="item2">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கோல்டு வின்னர் எண்ணெய்</span>
+          <span class="qty">17 லிட்டர்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item3">
+        <label for="item3">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">நெய்</span>
+          <span class="qty">3 லிட்டர்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item4">
+        <label for="item4">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">நல்லெண்ணெய்</span>
+          <span class="qty">1 லிட்டர்</span>
+        </label>
+      </li>
+    </ul>
+
+    <h2 class="section-title">மசாலா & தூள் பொருட்கள்</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item5">
+        <label for="item5">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">மஞ்சள் தூள்</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item6">
+        <label for="item6">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">தனி மிளகாய் தூள்</span>
+          <span class="qty">1 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item7">
+        <label for="item7">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சக்தி தனி மிளகாய் தூள்</span>
+          <span class="qty">½ கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item8">
+        <label for="item8">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சிக்கன் மசாலா</span>
+          <span class="qty">100 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item9">
+        <label for="item9">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கேசரி பவுடர்</span>
+          <span class="qty">5 பாக்கெட்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item10">
+        <label for="item10">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கல் உப்பு</span>
+          <span class="qty">4 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item11">
+        <label for="item11">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சால்ட்</span>
+          <span class="qty">1 பாக்கெட்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item12">
+        <label for="item12">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சர்க்கரை</span>
+          <span class="qty">8 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item13">
+        <label for="item13">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">ரோஸ் எசென்ஸ்</span>
+          <span class="qty">2</span>
+        </label>
+      </li>
+    </ul>
+
+    <h2 class="section-title">நறுமணப் பொருட்கள்</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item14">
+        <label for="item14">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பட்டை</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item15">
+        <label for="item15">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">லவங்கம்</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item16">
+        <label for="item16">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">ஏலக்காய்</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item17">
+        <label for="item17">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">அண்ணாச்சி பூ</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item18">
+        <label for="item18">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">மிளகு</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item19">
+        <label for="item19">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சீரகம்</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item20">
+        <label for="item20">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">வெந்தயம்</span>
+          <span class="qty">50 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item21">
+        <label for="item21">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">வெள்ளை எள்ளு</span>
+          <span class="qty">100 கிராம்</span>
+        </label>
+      </li>
+    </ul>
+
+    <h2 class="section-title">டிரை ப்ரூட்ஸ் & இனிப்பு</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item22">
+        <label for="item22">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">முந்திரி</span>
+          <span class="qty">1 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item23">
+        <label for="item23">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">திராட்சை</span>
+          <span class="qty">¼ கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item24">
+        <label for="item24">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">வெள்ளரி விதை</span>
+          <span class="qty">200 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item25">
+        <label for="item25">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பாதாம்</span>
+          <span class="qty">200 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item26">
+        <label for="item26">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பிஸ்தா</span>
+          <span class="qty">200 கிராம்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item27">
+        <label for="item27">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கோவா</span>
+          <span class="qty">2 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item28">
+        <label for="item28">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பேரிச்சம்பழம்</span>
+          <span class="qty">½ கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item29">
+        <label for="item29">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">மில்க்மெய்டு</span>
+          <span class="qty">4 டின்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item30">
+        <label for="item30">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பெரிய ரஸ்க் பாக்கெட்</span>
+          <span class="qty">12 பீஸ்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item31">
+        <label for="item31">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">வறுகடலை</span>
+          <span class="qty">¼ கிலோ</span>
+        </label>
+      </li>
+    </ul>
+
+    <h2 class="section-title">காய்கறி & கீரை</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item32">
+        <label for="item32">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">வெங்காயம்</span>
+          <span class="qty">30 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item33">
+        <label for="item33">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">தக்காளி</span>
+          <span class="qty">25 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item34">
+        <label for="item34">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">இஞ்சி</span>
+          <span class="qty">6 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item35">
+        <label for="item35">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பூண்டு</span>
+          <span class="qty">6 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item36">
+        <label for="item36">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">புதினா</span>
+          <span class="qty">4 பெரிய கட்டு</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item37">
+        <label for="item37">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">மல்லி</span>
+          <span class="qty">4 பெரிய கட்டு</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item38">
+        <label for="item38">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">பச்சை மிளகாய்</span>
+          <span class="qty">1 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item39">
+        <label for="item39">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">எலுமிச்சம்பழம்</span>
+          <span class="qty">40</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item40">
+        <label for="item40">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கத்திரிக்காய்</span>
+          <span class="qty">7 கிலோ</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item41">
+        <label for="item41">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">தயிர்</span>
+          <span class="qty">12 லிட்டர்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item42">
+        <label for="item42">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">புளி</span>
+          <span class="qty">½ கிலோ</span>
+        </label>
+      </li>
+    </ul>
+
+    <h2 class="section-title">உபகரணங்கள் & எரிபொருள்</h2>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="item43">
+        <label for="item43">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">விறகு</span>
+          <span class="qty">8 குண்டு</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item44">
+        <label for="item44">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">60 கிலோ வட்டம்</span>
+          <span class="qty">1</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item45">
+        <label for="item45">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">40 கிலோ வட்டம்</span>
+          <span class="qty">2</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item46">
+        <label for="item46">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">20 கிலோ வட்டம்</span>
+          <span class="qty">1</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item47">
+        <label for="item47">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">15 கிலோ வட்டம்</span>
+          <span class="qty">2</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item48">
+        <label for="item48">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கைத்தொண்டு</span>
+          <span class="qty">3</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item49">
+        <label for="item49">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">டீசல்</span>
+          <span class="qty">1 லிட்டர்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item50">
+        <label for="item50">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">அடுப்பு</span>
+          <span class="qty">3</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item51">
+        <label for="item51">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">துடுப்பு</span>
+          <span class="qty">2</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item52">
+        <label for="item52">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">சிலிண்டர்</span>
+          <span class="qty">1</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item53">
+        <label for="item53">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கேஸ் அடுப்பு</span>
+          <span class="qty">1</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item54">
+        <label for="item54">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">தீப்பெட்டி</span>
+          <span class="qty">1 பாக்ஸ்</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item55">
+        <label for="item55">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">கிங்பிஷர் ஸ்டாக்</span>
+          <span class="qty">4</span>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item56">
+        <label for="item56">
+          <span class="checkmark"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+          <span class="item-text">தண்ணீர் கேன்</span>
+          <span class="qty">15</span>
+        </label>
+      </li>
+    </ul>
+
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const total = checkboxes.length;
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const STORAGE_KEY = 'biryani-checklist';
+
+    function saveState() {
+      var state = {};
+      checkboxes.forEach(function(cb) {
+        if (cb.checked) state[cb.id] = true;
+      });
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+    }
+
+    function loadState() {
+      try {
+        var state = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (state) {
+          checkboxes.forEach(function(cb) {
+            if (state[cb.id]) cb.checked = true;
+          });
+        }
+      } catch(e) {}
+    }
+
+    function updateProgress() {
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const pct = Math.round((checked / total) * 100);
+      progressFill.style.width = pct + '%';
+      progressText.textContent = checked + ' / ' + total + ' பொருட்கள் தயார்';
+    }
+
+    loadState();
+    updateProgress();
+
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        saveState();
+        updateProgress();
+      });
+    });
+  </script>
+</body>
+</html>
